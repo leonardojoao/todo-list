@@ -6,6 +6,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
+const todos = require('./routes/todos');
+
+app.use('/api/todos', todos);
+
 try {
   mongoose.connect('mongodb://db:27017/crud-node-mongo-docker', {
     useNewUrlParser: true,
