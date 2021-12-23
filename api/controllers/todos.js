@@ -24,4 +24,15 @@ const listTodo = (async (req, res) => {
   }
 });
 
-module.exports = { createTodo, listTodo };
+const getTodo = (async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await Todos.findById(id);
+
+    res.json(todo);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+module.exports = { createTodo, listTodo, getTodo };
