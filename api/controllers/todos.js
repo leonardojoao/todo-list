@@ -14,4 +14,14 @@ const createTodo = (async (req, res) => {
   }
 });
 
-module.exports = { createTodo };
+const listTodo = (async (req, res) => {
+  try {
+    const todos = await Todos.find();
+
+    res.json(todos);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+module.exports = { createTodo, listTodo };
