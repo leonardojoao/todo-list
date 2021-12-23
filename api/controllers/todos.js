@@ -35,4 +35,20 @@ const getTodo = (async (req, res) => {
   }
 });
 
-module.exports = { createTodo, listTodo, getTodo };
+const deleteTodo = (async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Todos.findByIdAndDelete(id);
+
+    res.json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+module.exports = {
+  createTodo,
+  listTodo,
+  getTodo,
+  deleteTodo,
+};
