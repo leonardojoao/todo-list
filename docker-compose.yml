@@ -23,3 +23,12 @@ services:
       - '27017:27017'
     volumes:
       - ./data/db:/data/db
+
+  ui:
+    container_name: react
+    build: './ui'
+    volumes:
+      - ./ui/:/ui
+      - ./ui/node_modules:/ui/node_modules
+    ports:
+      - '8080:8080'
