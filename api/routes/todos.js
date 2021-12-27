@@ -7,6 +7,7 @@ const todosController = require('../controllers/todos');
 router.post('', todosController.createTodo);
 router.get('', todosController.listTodo);
 router.get('/:id', todosController.getTodo);
+router.patch('/:id', todosController.updateTodoStatus);
 router.delete('/:id', todosController.deleteTodo);
 
 module.exports = router;

@@ -35,6 +35,19 @@ const getTodo = (async (req, res) => {
   }
 });
 
+const updateTodoStatus = (async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { check } = req.body;
+
+    const result = await Todos.findByIdAndUpdate(id, { check }, { new: true });
+
+    res.json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 const deleteTodo = (async (req, res) => {
   try {
     const { id } = req.params;
@@ -50,5 +63,6 @@ module.exports = {
   createTodo,
   listTodo,
   getTodo,
+  updateTodoStatus,
   deleteTodo,
 };
